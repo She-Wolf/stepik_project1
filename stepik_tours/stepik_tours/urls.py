@@ -1,9 +1,9 @@
 
 from django.contrib import admin
 from django.urls import path
-from tours.views import MainView, DepartureView, TourView
-from tours.views import custom_handler404
-from tours.views import custom_handler500
+from stepik_tours.tours.views import MainView, DepartureView, TourView
+from stepik_tours.tours.views import custom_handler404
+from stepik_tours.tours.views import custom_handler500
 handler500 = custom_handler500
 handler404 = custom_handler404
 urlpatterns = [
