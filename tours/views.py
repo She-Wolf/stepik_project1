@@ -1,11 +1,18 @@
-from django.shortcuts import render
 from django.http import HttpResponseNotFound, Http404, HttpResponseServerError
+from django.shortcuts import render
 from django.views import View
-from data import tours, departures
+from random import randint
+
+from data import departures
 
 
 class MainView(View):
     def get(self, request):
+        tour_number = randint(1, 16)
+
+        context = {
+            'tour_number': tour_number
+        }
         return render(request, 'index.html')
 
 
@@ -21,15 +28,8 @@ class DepartureView(View):
 
 
 class TourView(View):
-    def get(self, request, tour):
-        if tour not in tours.keys():
-            raise Http404
-
-        context = {
-            "tours": tours.tour
-        }
-
-        return render(request, 'tour.html', context=context)
+    def get(self, request):
+        return render(request, 'tour.html')
 
 
 def custom_handler404(request, exception):
