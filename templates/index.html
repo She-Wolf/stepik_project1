@@ -11,20 +11,21 @@
 
     <!-- CARDS -->
 
-    <div class="row mt-5" data-test="cards">
-    {% for tour_number in tours %}
+    <div class="row mt-5" data-test="cards">'
+
+    {% for tour in tour_list %}
         <div class="col-4" data-test="card">
             <div class="card mb-3" >
-            <img src="{{ tours.tour_number.picture}}/300x200" class="card-img-top img-fluid" data-test="picture">
+            <img src="{{ tour.picture}}/300x200" class="card-img-top img-fluid" data-test="picture">
             <div class="card-body">
-              <h5 class="card-title">{{tours.tour_number.title}}</h5>
-             <p class="card-text">{{tours.tour_number.description}}</p>
+              <h5 class="card-title">{{tour.title}}</h5>
+             <p class="card-text">{{tour.description}}</p>
                 <a href="" class="btn btn-sm btn-primary" data-test="tourlink">Подробнее</a>
             </div>
         </div>
         </div>
 
-    {%endfor%}
+    {% endfor %}
     </div>
 {% endblock %}
 

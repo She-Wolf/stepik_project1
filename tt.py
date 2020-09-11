@@ -1,15 +1,5 @@
-from django.http import HttpResponseNotFound, Http404, HttpResponseServerError
-from django.shortcuts import render
-from django.views import View
 from random import randint
-
-from context_processors import departures
-
-
-class MainView(View):
-    def get(self, request):
-        tour_number = randint(1, 16)
-        tours = {
+tours = {
             1: {
                 "title": "Marina Lake Hotel & Spa",
                 "description": "Отель выглядит уютно. Он был построен из красного соснового дерева и украшен синими камнями.  Высокие округлые окна добавляют общий стиль дома и были добавлены в дом в довольно симметричном образце.",
@@ -189,35 +179,9 @@ class MainView(View):
 
         }
 
-        tour_list = []
-        for count in range(0, 6):
-            random_number = randint(1, 16)
-            tour_list.append(tours[random_number])
+tour_list = []
+for count in range(0,6):
+    random_number = randint(1, 16)
+    tour_list.append(tours[random_number])
 
-        context = {"tour_list": tour_list}
-
-        return render(request, 'index.html', context=context)
-
-
-class DepartureView(View):
-    def get(self, request, departure):
-        if departure not in departures.keys():
-            raise Http404
-
-        context = {
-            "departure": departures[departure]
-        }
-        return render(request, 'departure.html', context=context)
-
-
-class TourView(View):
-    def get(self, request):
-        return render(request, 'tour.html')
-
-
-def custom_handler404(request, exception):
-    return HttpResponseNotFound('Ой, нет такой страницы...Проверьте, что ввели ')
-
-
-def custom_handler500(exception):
-    return HttpResponseServerError('Сервер прилег... Скоро починим')
+    print(tour_list)
