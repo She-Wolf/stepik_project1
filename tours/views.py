@@ -21,13 +21,12 @@ class DepartureView(View):
 
 
 class TourView(View):
-    def get(self, request, id):
-        # Проверяем наличие ключа
-        if id not in tours.keys():
+    def get(self, request, tour):
+        if tour not in tours.keys():
             raise Http404
 
         context = {
-            "tours": tours[id]
+            "tours": tours.tour
         }
 
         return render(request, 'tour.html', context=context)

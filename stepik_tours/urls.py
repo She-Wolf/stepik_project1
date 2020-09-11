@@ -10,5 +10,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', MainView.as_view()),
     path('departure/<str:departure>/', DepartureView.as_view()),
-    path('tour/<int:id>/', TourView.as_view()),
+    path('tour/<str:tour>/', TourView.as_view()),
 ]
