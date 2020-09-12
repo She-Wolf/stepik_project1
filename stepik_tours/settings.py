@@ -13,6 +13,7 @@ SECRET_KEY = '3$xly14vt-iy8g3xdkb#i*s_dy0xp08lh)kf)9n_2rlkher-1('
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1']
+STATIC_ROOT = 'static'
 
 # Application definition
 

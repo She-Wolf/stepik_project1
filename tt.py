@@ -179,9 +179,11 @@ tours = {
 
         }
 
-tour_list = []
-for count in range(0,6):
+tour_list = {}
+for count in range(0, 6):
     random_number = randint(1, 16)
-    tour_list.append(tours[random_number])
-    print(tour_list)
+    tour_list[count] = tours[random_number]
+
+
+print(tour_list)
 
