@@ -184,4 +184,4 @@ for count in range(0,6):
     random_number = randint(1, 16)
     tour_list.append(tours[random_number])
 
-    print(tour_list)
+    print(tours)

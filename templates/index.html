@@ -11,9 +11,7 @@
 
     <!-- CARDS -->
 
-    <div class="row mt-5" data-test="cards">'
-
-    {% for tour in tour_list %}
+    <div class="row mt-5" data-test="cards">{% for tour in tour_list %}
         <div class="col-4" data-test="card">
             <div class="card mb-3" >
             <img src="{{ tour.picture}}/300x200" class="card-img-top img-fluid" data-test="picture">

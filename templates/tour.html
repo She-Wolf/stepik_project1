@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+ {% for tour in tour_list%}
     <h1 class="display-3 mt-4" data-test="title">{{ tour.title}}  {{tour.stars}} ★</h1>
 
     <!-- HERO -->
@@ -12,4 +13,5 @@
     <p class="my-4 w-75" data-test="description">{{ tour.description}}</p>
 
     <a href="" class="btn btn-success btn-lg" data-test="buybutton">Купить тур за <span data-test="price">{{ tour.price }}</span></a>
+{%endfor%}
 {% endblock %}
