@@ -189,10 +189,12 @@ class MainView(View):
 
         }
 
-        tour_list = {}
+        tour_list = []
         for count in range(0, 6):
             random_number = randint(1, 16)
-            tour_list[count] = tours[random_number]
+            tour = tours[random_number]
+            tour['id'] = random_number
+            tour_list.append(tour)
 
         context = {"tour_list": tour_list}
 
