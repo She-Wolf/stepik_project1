@@ -12,7 +12,7 @@ SECRET_KEY = '3$xly14vt-iy8g3xdkb#i*s_dy0xp08lh)kf)9n_2rlkher-1('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['stepik-apps.herokuapp.com']
 STATIC_ROOT = 'static'
 
 # Application definition
