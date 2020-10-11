@@ -10,6 +10,6 @@ handler404 = custom_handler404
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', MainView.as_view()),
-    path('departure/<str:departure>/', DepartureView.as_view()),
+    path('departure/<str:departure_id>/', DepartureView.as_view(), name='departure'),
     path('tours/<int:tour_id>/', TourView.as_view(), name='tour'),
 ]
