@@ -256,7 +256,8 @@ tours = {
     }
 
 }
-departures = {"msk": "Из Москвы", "spb": "Из Петербурга", "nsk": "Из Новосибирска", "ekb": "Из Екатеринбурга",
+departures = {"msk": "Из Москвы", "spb": "Из Петербурга",
+              "nsk": "Из Новосибирска", "ekb": "Из Екатеринбурга",
               "kazan": "Из Казани"}
 
 
@@ -279,8 +280,30 @@ def departure(request, departure_id):
     if departure_id not in departures.keys():
         raise Http404
     departure = departures.get(departure_id)
-    return render(request, 'departure.html', context={
-        'departure': departure
+    departure_name = departures[departure_id]
+    tour_list = []
+    price = []
+    nights = []
+    count = 0
+    for index in tours:
+        dep_tour = tours[index]
+        # if dep_tour['departure'] == departure:
+        tour_list.append(dep_tour)
+        count += 1
+        price.append(dep_tour['price'])
+        nights.append(dep_tour['nights'])
+    pricemin = min(price)
+    pricemax = max(price)
+    nightsmin = min(nights)
+    nightsmax = max(nights)
+    return render(request, 'departure.html', {'departure': departure,
+               'departure_name': departure_name,
+               'tour_list': tour_list,
+               'tourcount': count,
+               'pricemin': pricemin,
+               'pricemax': pricemax,
+               'nightsmin': nightsmin,
+               'nightsmax': nightsmax,
     })
 
 
@@ -288,10 +311,8 @@ def departure(request, departure_id):
 def tour(request, tour_id):
     tour = tours.get(tour_id)
     if tour is None:
-        raise
-    return render(request, 'tour.html', context={
-        'tour': tour
-    })
+        raise Http404
+    return render(request, 'tour.html',  {'tour': tour})
 
 
 def custom_handler404(request, exception):
