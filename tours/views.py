@@ -281,7 +281,7 @@ def departure(request, departure_id):
         raise Http404
     departure = departures.get(departure_id)
     departure_name = departures[departure_id]
-    tour_list = []
+    tour_list = {}
     price = []
     nights = []
     count = 0
@@ -297,22 +297,25 @@ def departure(request, departure_id):
     nightsmin = min(nights)
     nightsmax = max(nights)
     return render(request, 'departure.html', {'departure': departure,
-               'departure_name': departure_name,
-               'tour_list': tour_list,
-               'tourcount': count,
-               'pricemin': pricemin,
-               'pricemax': pricemax,
-               'nightsmin': nightsmin,
-               'nightsmax': nightsmax,
-    })
+                                              'departure_name': departure_name,
+                                              'tour_list': tour_list,
+                                              'tourcount': count,
+                                              'pricemin': pricemin,
+                                              'pricemax': pricemax,
+                                              'nightsmin': nightsmin,
+                                              'nightsmax': nightsmax, })
 
 
 # class TourView(View):
 def tour(request, tour_id):
     tour = tours.get(tour_id)
+    departure_id = tour['departure']
+    departure = departures.get(departure_id)
     if tour is None:
         raise Http404
-    return render(request, 'tour.html',  {'tour': tour})
+
+    return render(request, 'tour.html', {'tour': tour,
+                                         'departure': departure})
 
 
 def custom_handler404(request, exception):
