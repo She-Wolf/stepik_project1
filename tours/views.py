@@ -279,34 +279,33 @@ def index(request):
 def departure(request, departure_id):
     if departure_id not in departures.keys():
         raise Http404
-    departure = departures.get(departure_id)
-    departure_name = departures[departure_id]
-    tour_list = {}
+    count = 0
+    departure_tours = {}
     price = []
     nights = []
-    count = 0
-    for index in tours:
-        dep_tour = tours[index]
-        # if dep_tour['departure'] == departure:
-        tour_list.append(dep_tour)
-        count += 1
-        price.append(dep_tour['price'])
-        nights.append(dep_tour['nights'])
+    for key in tours:
+        tour = tours.get(key)
+        if tour.get('departure') == departure_id:
+            count += 1
+            departure_tours[count] = tour
+            price.append(tour.get('price'))
+            nights.append(tour.get('nights'))
+    departure_name = departures.get(departure_id)
+
     pricemin = min(price)
     pricemax = max(price)
     nightsmin = min(nights)
     nightsmax = max(nights)
-    return render(request, 'departure.html', {'departure': departure,
-                                              'departure_name': departure_name,
-                                              'tour_list': tour_list,
+    return render(request, 'departure.html', {'departure_name': departure_name,
+                                              # 'departure_tours': departure_tours,
                                               'tourcount': count,
                                               'pricemin': pricemin,
                                               'pricemax': pricemax,
                                               'nightsmin': nightsmin,
-                                              'nightsmax': nightsmax, })
+                                              'nightsmax': nightsmax,
+                                              })
 
 
-# class TourView(View):
 def tour(request, tour_id):
     tour = tours.get(tour_id)
     departure_id = tour['departure']
