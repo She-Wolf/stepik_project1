@@ -287,7 +287,7 @@ def departure(request, departure_id):
         tour = tours.get(key)
         if tour.get('departure') == departure_id:
             count += 1
-            departure_tours[count] = tour
+            departure_tours[key] = tour
             price.append(tour.get('price'))
             nights.append(tour.get('nights'))
     departure_name = departures.get(departure_id)
