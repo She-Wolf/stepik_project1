@@ -297,7 +297,7 @@ def departure(request, departure_id):
     nightsmin = min(nights)
     nightsmax = max(nights)
     return render(request, 'departure.html', {'departure_name': departure_name,
-                                              # 'departure_tours': departure_tours,
+                                              'departure_tours': departure_tours,
                                               'tourcount': count,
                                               'pricemin': pricemin,
                                               'pricemax': pricemax,

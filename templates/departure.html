@@ -10,11 +10,10 @@
     <!-- CARDS -->
 
       <div class="row mt-5" data-test="cards">
-          {% for tour in departure_tours%}
-          {{ departure_tours.tour }}
+      {% for tour_id, tour in departure_tours.items %}
         <div class="col-4" data-test="card">
             <div class="card mb-3" >
-            <img src="{{ picture }}/300x200" class="card-img-top img-fluid" data-test="picture">
+            <img src="{{tour.picture}}" class="card-img-top img-fluid" data-test="picture">
             <div class="card-body">
               <h5 class="card-title">{{tour.title}}</h5>
              <p class="card-text">{{tour.description}}</p>
@@ -22,6 +21,6 @@
             </div>
             </div>
         </div>
-<!--          {% endfor %}-->
+      {% endfor %}
       </div>
 {% endblock %}
