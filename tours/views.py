@@ -321,5 +321,5 @@ def custom_handler404(request, exception):
     return HttpResponseNotFound('Ой, что-то пошло не так...Проверьте, что ввели ')
 
 
-def custom_handler500(exception):
+def custom_handler500(request):
     return HttpResponseServerError('Сервер прилег... Скоро починим')
